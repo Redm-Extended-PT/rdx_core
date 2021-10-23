@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'RDR Gothica';
+    src: url('../fonts/RDR/RDRGothica-Regular.eot');
+    src: url('../fonts/RDR/RDRGothica-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/RDR/RDRGothica-Regular.woff2') format('woff2'),
+        url('../fonts/RDR/RDRGothica-Regular.woff') format('woff'),
+        url('../fonts/RDR/RDRGothica-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RDR Catalogue';
+    src: url('../fonts/RDR/RDRCatalogueBold-Bold.eot');
+    src: url('../fonts/RDR/RDRCatalogueBold-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/RDR/RDRCatalogueBold-Bold.woff2') format('woff2'),
+        url('../fonts/RDR/RDRCatalogueBold-Bold.woff') format('woff'),
+        url('../fonts/RDR/RDRCatalogueBold-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RDR Lino';
+    src: url('../fonts/RDR/RDRLino-Regular.eot');
+    src: url('../fonts/RDR/RDRLino-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/RDR/RDRLino-Regular.woff2') format('woff2'),
+        url('../fonts/RDR/RDRLino-Regular.woff') format('woff'),
+        url('../fonts/RDR/RDRLino-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hapna Slab Serif';
+    src: url('../fonts/RDR/HapnaSlabSerif-DemiBold.eot');
+    src: url('../fonts/RDR/HapnaSlabSerif-DemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/RDR/HapnaSlabSerif-DemiBold.woff2') format('woff2'),
+        url('../fonts/RDR/HapnaSlabSerif-DemiBold.woff') format('woff'),
+        url('../fonts/RDR/HapnaSlabSerif-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Redemption';
+    src: url('../fonts/RDR/Redemption.eot');
+    src: url('../fonts/RDR/Redemption.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/RDR/Redemption.woff2') format('woff2'),
+        url('../fonts/RDR/Redemption.woff') format('woff'),
+        url('../fonts/RDR/Redemption.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+	overflow: hidden;
+}
+
+#hud {
+	position: absolute;
+	font-family: 'Redemption';
+	font-size: 25px;
+	color: red;
+	padding: 4px;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	text-align: right;
+	top: 80;
+	right: 40;
+}
+
+#hud img.money {
+	max-width: 0.9em;
+}
+
+#inventory_notifications {
+	font-family: 'RDR Lino';
+	position: absolute;
+	right: 40;
+	bottom: 40;
+	font-size: 2em;
+	font-weight: bold;
+	color: #FFF;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.menu {
+	font-family: 'Open Sans', sans-serif;
+	min-width: 400px;
+	min-height: 250px;
+	color: #fff;
+	position: absolute;
+	left: 40;
+	top: 0;
+}
+
+.menu .head {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 28px;
+	padding: 10px;
+	background: #1A1A1A;
+	border-bottom: 3px solid #BC1635;
+	border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	-o-border-radius: 10px 10px 0 0;
+	box-shadow: inset 0px 1px 0 rgba(255, 255, 255, 0.28);
+	-webkit-box-shadow: inset 0px 1px 0 rgba(255, 255, 255, 0.28);
+	-moz-box-shadow: inset 0px 1px 0 rgba(255, 255, 255, 0.28);
+	-o-box-shadow: inset 0px 1px 0 rgba(255, 255, 255, 0.28);
+	box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.4);
+}
+
+.menu .head span {
+	font-family: 'RDR Lino';
+	font-size: 28px;
+	padding-left: 15px;
+	padding-top: 6px;
+}
+
+.menu .menu-items .menu-item {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	height: 40px;
+	display: block;
+	background-color: #f1f1f1;
+	box-shadow: inset 1px 0px 0px 1px #b8b8b8;
+	height: 32px;
+	line-height: 32px;
+	color: #3A3A3A;
+	text-align: center;
+}
+
+.menu .menu-items .menu-item.selected {
+	background-color: #ccc;
+}
