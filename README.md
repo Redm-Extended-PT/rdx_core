@@ -1,10 +1,9 @@
 # RedM Extended
-![RedM Extended](https://i.imgur.com/44Wxje2.jpg)
+![RedM Extended](https://cdn.discordapp.com/attachments/686807996420063232/901407156245512192/unknown2343.png)
 
 RedM_Extended is a roleplay framework for RedM, original code is from es_extended based on FiveM. The to-go framework for creating an economy based roleplay server on RedM!
 
 ## Links & Read more
-- [RDX Framework Documentation](https://redm-extended.viisauksia.wtf)
 - [RedM Native Reference](https://vespura.com/doc/natives/)
 - [RDX Menu Default](https://github.com/TigoDevelopment/rdx_menu_default)
 - [RDX Menu Dialog](https://github.com/TigoDevelopment/rdx_menu_dialog)
@@ -21,5 +20,4 @@ RedM_Extended is a roleplay framework for RedM, original code is from es_extende
 - Register your own commands easily, with argument validation, chat suggestion and using FXServer ACL
 
 ## Screenshots
-![RedM-Extended](https://i.imgur.com/8ERHoeG.jpg)
-![RedM-Extended](https://i.imgur.com/pKBBvin.jpg)
+![RedM-Extended](https://cdn.discordapp.com/attachments/686807996420063232/901408246991032390/unknown.png)
