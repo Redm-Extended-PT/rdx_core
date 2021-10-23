@@ -5,11 +5,11 @@ RedM_Extended is a roleplay framework for RedM, original code is from es_extende
 
 ## Links & Read more
 - [RedM Native Reference](https://vespura.com/doc/natives/)
-- [RDX Menu Default](https://github.com/TigoDevelopment/rdx_menu_default)
-- [RDX Menu Dialog](https://github.com/TigoDevelopment/rdx_menu_dialog)
+- [RDX Menu Default](https://github.com/Redm-Extended-PT/rdx_menu_default)
+- [RDX Menu Dialog](https://github.com/Redm-Extended-PT/rdx_menu_dialog)
 - [Async RedM](https://github.com/TigoDevelopment/redm-async/tree/master)
 - [MySQL (Async) RedM](https://github.com/TigoDevelopment/redm-mysql-async)
-- [RDX Framework Discord](https://discord.gg/NGktmmq77a)
+- [RDX Framework Discord](https://discord.gg/bexkufBprf)
 
 ## Features
 - Weight based inventory system
