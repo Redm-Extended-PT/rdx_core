@@ -31,7 +31,7 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 			RequestModel(defaultModel)
 
 			while not HasModelLoaded(defaultModel) do
-				Citizen.Wait(0)
+				Citizen.Wait(500)
 			end
 
 			SetPlayerModel(PlayerId(), defaultModel, 0)
@@ -46,6 +46,7 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 	-- disable wanted level
 	ClearPlayerWantedLevel(PlayerId())
 	SetMaxWantedLevel(0)
+	Citizen.Wait(3000)
 
 	RDX.Game.Teleport(PlayerPedId(), {
 		x = playerData.coords.x,
