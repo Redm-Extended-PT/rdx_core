@@ -478,17 +478,17 @@ function StartServerSyncLoops()
 	end)
 end
 
--- Citizen.CreateThread(function()
-	-- while true do
-		-- Citizen.Wait(0)
+Citizen.CreateThread(function()
+	 while true do
+		 Citizen.Wait(0)
 
-		-- if IsControlJustReleased(0, 0x1F6D95E5) then -- F1
-			-- if IsInputDisabled(0) and not isDead and not RDX.UI.Menu.IsOpen('default', 'redm_extended', 'inventory') then
-				-- RDX.ShowInventory()
-			-- end
-		-- end
-	-- end
--- end)
+		 if IsControlJustReleased(0, 0x1F6D95E5) then -- F1
+			 if IsInputDisabled(0) and not isDead and not RDX.UI.Menu.IsOpen('default', 'redm_extended', 'inventory') then
+				 RDX.ShowInventory()
+			 end
+		 end
+	 end
+end)
 
 -- Pickups
 Citizen.CreateThread(function()
