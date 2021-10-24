@@ -21,3 +21,6 @@ RedM_Extended is a roleplay framework for RedM, original code is from es_extende
 
 ## Screenshots
 ![RedM-Extended](https://cdn.discordapp.com/attachments/686807996420063232/901408246991032390/unknown.png)
+
+## Credits
+[esx-ORG](https://github.com/esx-framework)
