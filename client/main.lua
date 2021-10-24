@@ -61,7 +61,7 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 
 		TriggerServerEvent('rdx:onPlayerSpawn')
 		TriggerEvent('rdx:onPlayerSpawn')
-		TriggerEvent('playerSpawned') -- compatibility with old scripts, will be removed soon
+		--TriggerEvent('playerSpawned') -- compatibility with old scripts, will be removed soon
 		TriggerEvent('rdx:restoreLoadout')
 
 		if Config.EnableHud then
