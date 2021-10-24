@@ -24,3 +24,4 @@ RedM_Extended is a roleplay framework for RedM, original code is from es_extende
 
 ## Credits
 [esx-ORG](https://github.com/esx-framework)
+[ThymonA](https://github.com/ThymonA)
