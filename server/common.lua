@@ -51,7 +51,7 @@ MySQL.ready(function()
 		end)
 	end)
 
-	print('^4[RDX_CORE]^7 ^3[INFO]^7 RDX FEITO POR ^5[ESX-Org]^7 REVEITO POR ^5[ThymonA]^7 E MODIFICADO POR ^1[Nevermind]^7 INICIOU COM ^2[SUCESSO]^7')
+	print('^4[RDX_CORE]^7 ^3[INFO]^7 RDX FEITO POR ^5[ESX-Org]^7 REFEITO POR ^5[ThymonA]^7 E MODIFICADO POR ^1[Nevermind]^7 INICIOU COM ^2[SUCESSO]^7')
 end)
 
 RegisterServerEvent('rdx:clientLog')
