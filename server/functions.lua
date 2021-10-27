@@ -230,6 +230,20 @@ RDX.GetPlayers = function()
 	return sources
 end
 
+RDX.GetExtendedPlayers = function(key, val)
+	local xPlayers = {}
+	for k, v in pairs(RDX.Players) do
+		if key then
+			if (key == 'job' and v.job.name == val) or v[key] == val then
+				table.insert(xPlayers, v)
+			end
+		else
+			table.insert(xPlayers, v)
+		end
+	end
+	return xPlayers
+end
+
 RDX.GetPlayerFromId = function(source)
 	return RDX.Players[tonumber(source)]
 end
