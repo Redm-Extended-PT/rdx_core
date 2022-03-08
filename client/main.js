@@ -33,5 +33,4 @@ function DisplayLeftNotification(title, subTitle, dict, icon, duration) {
 	struct2.setBigInt64(48, BigInt(GetHashKey("COLOR_WHITE")), true);
 
 	Citizen.invokeNative("0x26E87218390E6729", struct1, struct2, 1, 1);
-}"0xD05590C1AB38F068", struct1, struct2, 1, 1);
 }
