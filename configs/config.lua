@@ -16,6 +16,7 @@ Config.PaycheckInterval     = 7 * 60000 -- how often to recieve pay checks in mi
 Config.EnableDebug          = false
 Config.AutoStopResources	= true -- `true` is recommended because those resources are incompatible with RDX framework, `false` is default for visibility in server list
 Config.DefaultIdentifier	= 'steam' -- Options: `steam`, `license`, `fivem`, `discord`, `xbl`, `live` and `ip`, default `license`
+Config.SaveAllTimer = 15000
 
 Config.IncompatibleResourcesToStop = {
 	['spawnmanager'] = 'Default resource that takes care of spawning players, RDX does this already',
