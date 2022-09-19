@@ -530,12 +530,16 @@ RDX.RegisterServerCallback('rdx:getPlayerNames', function(source, cb, players)
 end)
 
 Citizen.CreateThread(function()
- while true do	  
-     Citizen.Wait(Config.SaveAllTimer) 
-     RDX.SavePlayers() 
+	while true do 
+        Citizen.Wait(Config.SaveAllTimer)
+        RDX.SavePlayers()				
  end
 end)
 
-RDX.StartDBSync()
-RDX.StartPayCheck()
-RDX.SavePlayers() 
+Citizen.CreateThread(function()
+	RDX.StartDBSync()
+	RDX.StartPayCheck()
+	TriggerServerEvent('rdx_skin:loadSkin')
+	TriggerServerEvent('rdx_clothing:loadClothes') 
+	RDX.SavePlayers() 
+end)
