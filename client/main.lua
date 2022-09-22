@@ -33,7 +33,6 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 			while not HasModelLoaded(defaultModel) do
 				Citizen.Wait(500)
 			end
-
 			SetPlayerModel(PlayerId(), defaultModel, 0)
 			SetPedOutfitPreset(PlayerPedId(), 0, 0)
 			SetModelAsNoLongerNeeded(defaultModel)
@@ -43,6 +42,11 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 	-- enable PVP
 	NetworkSetFriendlyFireOption(true)
 
+	-- Reveal Map
+	if Config.RevealMap then
+	    Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
+	end
+		
 	-- disable wanted level
 	ClearPlayerWantedLevel(PlayerId())
 	SetMaxWantedLevel(0)
