@@ -42,6 +42,11 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 
 	-- enable PVP
 	NetworkSetFriendlyFireOption(true)
+		
+	-- Reveal Map
+	if Config.RevealMap then
+	    Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
+	end
 
 	-- disable wanted level
 	ClearPlayerWantedLevel(PlayerId())
