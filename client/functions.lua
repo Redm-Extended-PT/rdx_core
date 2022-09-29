@@ -64,6 +64,18 @@ RDX.ShowTopCenterNotification = function(text, duration, town)
 	TriggerEvent('rdx:displayTopCenterNotification', text, duration, town)
 end
 
+RDX.Animation = function(ped, dict, name)
+    if not DoesAnimDictExist(dict) then
+      return
+    end
+    RequestAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do
+    Citizen.Wait(0)
+    end
+    TaskPlayAnim(ped, dict, name, -1.0, -0.5, 2000, 1, 0, true, 0, false, 0, false)
+    RemoveAnimDict(dict)
+end
+
 RDX.TriggerServerCallback = function(name, cb, ...)
 	RDX.ServerCallbacks[RDX.CurrentRequestId] = cb
 
