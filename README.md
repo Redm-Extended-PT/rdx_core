@@ -20,10 +20,12 @@ RedM_Extended is a roleplay framework for RedM, original code is from es_extende
 - Register your own commands easily, with argument validation, chat suggestion and using FXServer ACL
 
 ## Add system admins on the server.cfg
-add_principal group.admin group.user
-add_ace group.admin command allow # allow all commands
-add_ace group.admin command.quit deny # but don't allow quit
-add_principal identifier.steam:**************** group.admin # ADM
+- add_principal group.admin group.user
+- add_ace group.admin command allow # allow all commands
+- add_ace group.admin command.quit deny # but don't allow quit
+- add_principal identifier.steam:**************** group.admin # ADM
+- Easy to use API for developers to easily integrate RDX to their projects
+- Register your own commands easily, with argument validation, chat suggestion and using FXServer ACL
 
 ## Screenshots
 ![RedM-Extended](https://cdn.discordapp.com/attachments/686807996420063232/901408246991032390/unknown.png)
