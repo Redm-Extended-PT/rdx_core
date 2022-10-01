@@ -17,12 +17,6 @@ Config.EnableDebug          = false
 Config.AutoStopResources	= true -- `true` is recommended because those resources are incompatible with RDX framework, `false` is default for visibility in server list
 Config.DefaultIdentifier	= 'steam' -- Options: `steam`, `license`, `fivem`, `discord`, `xbl`, `live` and `ip`, default `license`
 Config.RevealMap            = true
-Config.MapAnim              = false -- Do not tuch this
-Config.Traffic = {
-    pedFrequency = 5.3,
-    trafficFrequency = 0.1,
-    animalFrequency = 2.2,
-}
 
 Config.IncompatibleResourcesToStop = {
 	['spawnmanager'] = 'Default resource that takes care of spawning players, RDX does this already',
