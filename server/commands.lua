@@ -93,6 +93,18 @@ end, true, {help = _U('command_giveweapon'), validate = true, arguments = {
 	{name = 'ammo', help = _U('command_giveweapon_ammo'), type = 'number'}
 }})
 
+RDX.RegisterCommand('giveammo', 'admin', function(xPlayer, args, showError)
+	if not args.playerId.hasWeapon(args.weapon) then
+		showError(_U('command_giveweapon_does_not_haveweapon'))
+	else
+		xPlayer.addWeaponAmmo(args.weapon, args.ammo)
+	end
+end, true, {help = _U('command_giveweapon'), validate = true, arguments = {
+	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
+	{name = 'weapon', help = _U('command_giveweapon_weapon'), type = 'weapon'},
+	{name = 'ammo', help = _U('command_giveweapon_ammo'), type = 'number'}
+}})
+
 RDX.RegisterCommand('giveweaponcomponent', 'admin', function(xPlayer, args, showError)
 	if args.playerId.hasWeapon(args.weaponName) then
 		local component = RDX.GetWeaponComponent(args.weaponName, args.componentName)
