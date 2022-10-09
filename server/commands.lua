@@ -175,3 +175,66 @@ end, true, {help = _U('command_save'), validate = true, arguments = {
 RDX.RegisterCommand('saveall', 'admin', function(xPlayer, args, showError)
 	RDX.SavePlayers()
 end, true, {help = _U('command_saveall')})
+
+RDX.RegisterCommand('group', {"user", "admin"}, function(xPlayer, args, showError)
+	print(xPlayer.getName()..", You are currently: ^5".. xPlayer.getGroup() .. "^0")
+end, true)
+
+RDX.RegisterCommand('job', {"user", "admin"}, function(xPlayer, args, showError)
+	print(xPlayer.getName()..", You are currently: ^5".. xPlayer.getJob().name.. "^0 - ^5".. xPlayer.getJob().grade_label .. "^0")
+end, true)
+
+RDX.RegisterCommand('info', {"user", "admin"}, function(xPlayer, args, showError)
+	local job = xPlayer.getJob().name
+	local jobgrade = xPlayer.getJob().grade_name
+	print("^2ID : ^5"..xPlayer.source.." ^0| ^2Name:^5"..xPlayer.getName().." ^0 | ^2Group:^5"..xPlayer.getGroup().."^0 | ^2Job:^5".. job.."^0")
+end, true)
+
+RDX.RegisterCommand('coords', "admin", function(xPlayer, args, showError)
+    local ped = GetPlayerPed(xPlayer.source)
+	local coords = GetEntityCoords(ped, false)
+	local heading = GetEntityHeading(ped)
+	print("Coords - Vector3: ^5".. vector3(coords.x,coords.y,coords.z).. "^0")
+	print("Coords - Vector4: ^5".. vector4(coords.x, coords.y, coords.z, heading) .. "^0")
+end, true)
+
+RDX.RegisterCommand('goto', "admin", function(xPlayer, args, showError)
+	local targetCoords = args.playerId.getCoords()
+	xPlayer.setCoords(targetCoords)
+end, true, {help = _U('command_goto'), validate = true, arguments = {
+	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
+}})
+
+RDX.RegisterCommand('bring', "admin", function(xPlayer, args, showError)
+	local playerCoords = xPlayer.getCoords()
+	args.playerId.setCoords(playerCoords)
+end, true, {help = _U('command_bring'), validate = true, arguments = {
+	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
+}})
+
+RDX.RegisterCommand('kill', "admin", function(xPlayer, args, showError)
+	args.playerId.triggerEvent("RDX:killPlayer")
+end, true, {help = _U('command_kill'), validate = true, arguments = {
+	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
+}})
+
+RDX.RegisterCommand('freeze', "admin", function(xPlayer, args, showError)
+	args.playerId.triggerEvent('RDX:freezePlayer', "freeze")
+end, true, {help = _U('command_freeze'), validate = true, arguments = {
+	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
+}})
+
+RDX.RegisterCommand('unfreeze', "admin", function(xPlayer, args, showError)
+	args.playerId.triggerEvent('RDX:freezePlayer', "unfreeze")
+end, true, {help = _U('command_unfreeze'), validate = true, arguments = {
+	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
+}})
+
+RDX.RegisterCommand('players', "admin", function(xPlayer, args, showError)
+	local xPlayers = RDX.GetExtendedPlayers() -- Returns all xPlayers
+	print("^5"..#xPlayers.." ^2online player(s)^0")
+	for i=1, #(xPlayers) do 
+		local xPlayer = xPlayers[i]
+		print("^1[ ^2ID : ^5"..xPlayer.source.." ^0| ^2Name : ^5"..xPlayer.getName().." ^0 | ^2Group : ^5"..xPlayer.getGroup().." ^0 | ^2Identifier : ^5".. xPlayer.identifier .."^1]^0\n")
+	end
+end, true)
