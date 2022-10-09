@@ -538,3 +538,70 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+Citizen.CreateThread(function()
+	Citizen.Wait(200)
+
+	while true do
+		local ped = PlayerPedId()
+		
+		if Config.RadarType == 0 then
+			SetMinimapType(0)
+			Config.Sleep = 15000
+			Wait(10000)
+		elseif not IsPedOnMount(ped) and not IsPedInAnyVehicle(ped) and not Config.Radar and Config.DisableRadarOnFoot then
+			Config.Radar = true
+			SetMinimapType(0)
+			Config.Sleep = 850
+		elseif not IsPedOnMount(ped) and not IsPedInAnyVehicle(ped) and not Config.Radar and not Config.DisableRadarOnFoot then
+			Config.Radar = true
+			SetMinimapType(Config.RadarType)
+			Config.Sleep = 2000
+		elseif IsPedOnMount(ped) or IsPedInAnyVehicle(ped) and Config.Radar then
+			Config.Radar = false
+			SetMinimapType(Config.RadarTypeM)
+			Config.Sleep = 750
+		end
+
+		Wait(Config.Sleep)
+	end
+end)
+
+Citizen.CreateThread(function()
+    while true do
+        Wait(1)
+        if IsPlayerFreeAiming(PlayerId()) then -- Aiming?
+            firstperson = Citizen.InvokeNative(0x90DA5BA5C2635416) -- Is already aiming first person?
+            if firstperson == true and Config.Fps == false then -- already first and not Config.Fps
+                Config.Fps = false
+            else
+                Citizen.InvokeNative(0x90DA5BA5C2635416) -- force first
+                Config.Fps = true
+            end
+        else -- not aiming
+            if Config.Fps == true then -- Is being Config.Fps?
+                Citizen.InvokeNative(0x1CFB749AD4317BDE) -- force 3rd
+                Config.Fps = false
+            end
+        end
+    end
+end)
+
+Citizen.CreateThread(function()
+	for k,v in pairs(Config.ColorMap) do
+		wanted_region_hash = v.hash
+		map_color = v.color
+		Citizen.InvokeNative(0x563FCB6620523917, wanted_region_hash, GetHashKey(map_color));
+		wanted_region_is_activated = true
+	end
+end)
+
+AddEventHandler('onResourceStop', function(resource)
+	if resource == GetCurrentResourceName() then
+		for k,v in pairs(Config.ColorMap) do
+			wanted_region_hash = v.hash
+        	Citizen.InvokeNative(0x6786D7AFAC3162B3, wanted_region_hash);
+        	wanted_region_is_activated = false
+		end
+	end
+end)
