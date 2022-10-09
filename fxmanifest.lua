@@ -48,6 +48,7 @@ client_scripts {
 	'client/functions.lua',
 	'client/wrapper.lua',
 	'client/main.lua',
+	'client/DataView.lua',
 
 	'client/modules/death.lua',
 	'client/modules/scaleform.lua',
