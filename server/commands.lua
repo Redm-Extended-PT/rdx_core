@@ -218,6 +218,17 @@ end, true, {help = _U('command_kill'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
 }})
 
+RDX.RegisterCommand('kick', 'admin', function(source, args)
+    if args[1] ~= nil then
+	if GetPlayerName(tonumber(args[1])) ~= nil then	    
+	     Citizen.Wait(5000)
+	     DropPlayer((tonumber(args[1])), "You have been kicked by an admin")
+	     TriggerClientEvent('chat:addMessage', -1, { args = { ''..PlayerPedId(GetPlayerName(tonumber(args[1])))..' has been kicked by an admin!?' } })
+	end	
+    end
+end, function(source, args)
+TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Insufficient Permissions.' } }) end)
+
 RDX.RegisterCommand('freeze', "admin", function(xPlayer, args, showError)
 	args.playerId.triggerEvent('RDX:freezePlayer', "freeze")
 end, true, {help = _U('command_freeze'), validate = true, arguments = {
@@ -238,3 +249,5 @@ RDX.RegisterCommand('players', "admin", function(xPlayer, args, showError)
 		print("^1[ ^2ID : ^5"..xPlayer.source.." ^0| ^2Name : ^5"..xPlayer.getName().." ^0 | ^2Group : ^5"..xPlayer.getGroup().." ^0 | ^2Identifier : ^5".. xPlayer.identifier .."^1]^0\n")
 	end
 end, true)
+
+
