@@ -33,6 +33,7 @@ server_scripts {
 }
 
 client_scripts {
+	'imports.lua',
 	'libs/libs.lua',
 
 	'locale.lua',
