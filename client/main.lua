@@ -16,34 +16,32 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('rdx:playerLoaded')
-AddEventHandler('rdx:playerLoaded', function(playerData)
+AddEventHandler('rdx:playerLoaded', function(playerData, isNew, skin)
 	if (Config.EnableDebug) then
 		TriggerServerEvent('rdx:clientLog', ('after %sms `rdx:playerLoaded` was called from the server after `rdx:onPlayerJoined` event has been triggerd for player id %s'):format((GetGameTimer() - RDX.StartTimer), playerData.playerId))
 	end
 
 	RDX.PlayerLoaded = true
 	RDX.PlayerData = playerData
-
+		
 	if GetEntityModel(PlayerPedId()) == 0x0D7114C9 or GetEntityModel(PlayerPedId()) == 0x00B69710 then
-		local defaultModel = 0xF5C1611E -- mp_male
+		local defaultModel = 0xF5C1611E
+		RequestModel(defaultModel)
 
-		if (IsModelInCdimage(defaultModel)) then
-			RequestModel(defaultModel)
-
-			while not HasModelLoaded(defaultModel) do
-				Citizen.Wait(500)
-			end
-
-			SetPlayerModel(PlayerId(), defaultModel, 0)
-			SetPedOutfitPreset(PlayerPedId(), 0, 0)
-			SetModelAsNoLongerNeeded(defaultModel)
+		while not HasModelLoaded(defaultModel) do
+			Citizen.Wait(10)
 		end
+
+		SetPlayerModel(PlayerId(), defaultModel)
+		SetPedRandomComponentVariation(PlayerPedId(), true)
+		SetModelAsNoLongerNeeded(defaultModel)
 	end
 
 	-- enable PVP
-	NetworkSetFriendlyFireOption(true)
-		
-	-- Reveal Map
+	if Config.EnablePVP then
+		NetworkSetFriendlyFireOption(true)
+	end
+	
 	if Config.RevealMap then
 	    Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
 	end
@@ -57,17 +55,39 @@ AddEventHandler('rdx:playerLoaded', function(playerData)
 		x = playerData.coords.x,
 		y = playerData.coords.y,
 		z = playerData.coords.z + 0.25,
-		heading = playerData.coords.heading
-	}, function()
-		ShutdownLoadingScreen()
-		DoScreenFadeIn(1000)
-		FreezeEntityPosition(PlayerPedId(), false)
-		StartServerSyncLoops()
+		heading = playerData.coords.heading,
+		}, function()
+			TriggerServerEvent('rdx:onPlayerSpawn')
+			TriggerEvent('rdx:onPlayerSpawn')
+			TriggerEvent('playerSpawned') -- compatibility with old scripts
+			TriggerEvent('rdx:restoreLoadout')
+			if isNew then
+				if skin.sex == 0 then
+					TriggerEvent('rdx_skin:updateBody', true)
+				else
+					TriggerEvent('rdx_skin:updateBody', false)
+				end
+			elseif skin then TriggerServerEvent("rdx_skin:loadSkin") end
+			Citizen.Wait(4000)
+			ShutdownLoadingScreen()
+			ShutdownLoadingScreenNui()
+			DoScreenFadeIn(1000)
+			FreezeEntityPosition(PlayerPedId(), false)
+			StartServerSyncLoops()
+			
+		CreateThread(function()
+			local SetPlayerHealthRechargeMultiplier = SetPlayerHealthRechargeMultiplier
+			local PlayerId = PlayerId()
+			while true do 
+				local Sleep = true
 
-		TriggerServerEvent('rdx:onPlayerSpawn')
-		TriggerEvent('rdx:onPlayerSpawn')
-		TriggerEvent('playerSpawned') -- compatibility with old scripts, will be removed soon
-		TriggerEvent('rdx:restoreLoadout')
+				if Config.DisableHealthRegeneration then
+					Sleep = false
+					SetPlayerHealthRechargeMultiplier(PlayerId, 0.0)
+				end				
+			Wait(Sleep and 1500 or 0)
+			end
+		end)
 
 		if Config.EnableHud then
 			for i = 1, #playerData.accounts do
