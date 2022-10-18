@@ -44,24 +44,30 @@ RDX.SetPlayerData = function(key, val)
 	RDX.PlayerData[key] = val
 end
 
-RDX.ShowNotification = function(msg, flash, saveToBrief, hudColorIndex)
+RDX.ShowNotification = function(msg, x, y, centre)
+   msg = CreateVarString(10, 'STRING', msg, Citizen.ResultAsLong())
+   SetTextCentre(centre)
+   Citizen.InvokeNative(0xADA9255D, 10);
+   DisplayText(msg, x, y)
 end
 
-RDX.ShowAdvancedNotification = function(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex)
+RDX.ShowAdvancedNotification = function(text, dict, icon, text_color, duration)
+    TriggerEvent('rdx:displayShowAdvancedNotification', text, dict, icon, text_color, duration)
 end
 
-RDX.ShowHelpNotification = function(msg, thisFrame, beep, duration)
+RDX.ShowHelpNotification = function(text, location, duration)
+    TriggerEvent('rdx:displayShowHelpNotification', text, location, duration)
 end
 
 RDX.ShowFloatingHelpNotification = function(msg, coords)
 end
 
 RDX.ShowTopLeftNotification = function(title, subTitle, iconDict, icon, duration)
-	TriggerEvent('rdx:displayLeftNotification', title, subTitle, iconDict, icon, duration)
+    TriggerEvent('rdx:displayLeftNotification', title, subTitle, iconDict, icon, duration)
 end
 
 RDX.ShowTopCenterNotification = function(text, duration, town)
-	TriggerEvent('rdx:displayTopCenterNotification', text, duration, town)
+    TriggerEvent('rdx:displayTopCenterNotification', text, duration, town)
 end
 
 RDX.Animation = function(ped, dict, name)
