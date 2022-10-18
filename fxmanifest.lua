@@ -33,7 +33,6 @@ server_scripts {
 }
 
 client_scripts {
-	'imports.lua',
 	'libs/libs.lua',
 
 	'locale.lua',
@@ -65,6 +64,7 @@ ui_page {
 }
 
 files {
+	'imports.lua',
 	'locale.js',
 	'html/ui.html',
 
