@@ -1,20 +1,22 @@
 Config = {}
 Config.Locale = 'en'
-Config.StartingAccountMoney = { bank = 0 }
-Config.EnableSocietyPayouts = false -- pay from the society account that the player is employed at? Requirement: esx_society
-Config.EnableHud            = true -- enable the default hud? Display current job and accounts (black, bank & cash)
-Config.MaxWeight            = 25000   -- the max inventory weight without backpack
-Config.PaycheckInterval     = 7 * 60000 -- how often to recieve pay checks in milliseconds
-Config.EnableDebug          = false
-Config.AutoStopResources	= true -- `true` is recommended because those resources are incompatible with RDX framework, `false` is default for visibility in server list
-Config.DefaultIdentifier	= 'steam' -- Options: `steam`, `license`, `fivem`, `discord`, `xbl`, `live` and `ip`, default `license`
-Config.RevealMap            = true
-Config.DisableRadarOnFoot = false
-Config.RadarType = 3
-Config.RadarTypeM = 1
-Config.Radar = false
-Config.Sleep = 650
-Config.Fps = false
+Config.StartingAccountMoney       = { bank = 0 }
+Config.EnableSocietyPayouts       = false -- pay from the society account that the player is employed at? Requirement: esx_society
+Config.EnableHud                  = true -- enable the default hud? Display current job and accounts (black, bank & cash)
+Config.MaxWeight                  = 25000   -- the max inventory weight without backpack
+Config.PaycheckInterval           = 7 * 60000 -- how often to recieve pay checks in milliseconds
+Config.EnableDebug                = true
+Config.AutoStopResources	      = true -- `true` is recommended because those resources are incompatible with RDX framework, `false` is default for visibility in server list
+Config.DefaultIdentifier	      = 'steam' -- Options: `steam`, `license`, `fivem`, `discord`, `xbl`, `live` and `ip`, default `license`
+Config.EnablePVP                  = true -- Allow Player to player combat
+Config.DisableHealthRegeneration  = false -- Player will no longer regenerate health
+Config.RevealMap                  = true
+Config.DisableRadarOnFoot         = false
+Config.RadarType                  = 3
+Config.RadarTypeM                 = 1
+Config.Radar                      = false
+Config.Sleep                      = 650
+Config.Fps                        = false
 
 Config.Accounts = {
 	{ name = 'bank', label = _U('account_bank'), priority = 0.0 },
