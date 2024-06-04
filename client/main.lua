@@ -591,17 +591,12 @@ Citizen.CreateThread(function()
     while true do
         Wait(1)
         if IsPlayerFreeAiming(PlayerId()) then -- Aiming?
-            firstperson = Citizen.InvokeNative(0x90DA5BA5C2635416) -- Is already aiming first person?
-            if firstperson == true and Config.Fps == false then -- already first and not Config.Fps
-                Config.Fps = false
-            else
+            if Config.Fps == true then -- already first and not Config.Fps
                 Citizen.InvokeNative(0x90DA5BA5C2635416) -- force first
-                Config.Fps = true
             end
         else -- not aiming
-            if Config.Fps == true then -- Is being Config.Fps?
+            if Config.Fps == false then -- Is being Config.Fps?
                 Citizen.InvokeNative(0x1CFB749AD4317BDE) -- force 3rd
-                Config.Fps = false
             end
         end
     end
